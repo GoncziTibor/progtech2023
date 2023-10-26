@@ -1,6 +1,6 @@
-package org.example;
+package wumpus;
 
-import org.example.view.menu.User;
+import wumpus.view.menu.User;
 
 public class Main {
     public static void main(String[] args) {

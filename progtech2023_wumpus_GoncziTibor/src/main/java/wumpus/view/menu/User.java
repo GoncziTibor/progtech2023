@@ -1,4 +1,4 @@
-package org.example.view.menu;
+package wumpus.view.menu;
 
 import java.util.Scanner;
 
