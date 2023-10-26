@@ -1,5 +1,6 @@
 package wumpus;
 
+import wumpus.view.menu.Menu;
 import wumpus.view.menu.User;
 
 public class Main {
@@ -9,10 +10,12 @@ public class Main {
         String userName = User.getUsername();
         User.greetUser(userName);
 
+        Menu menu = new Menu();
+
         boolean game = false;
 
         while (!game){
-            int answer =;
+            int answer = menu.getUserAnswer();
 
             switch (answer) {
                 case 1:
@@ -26,8 +29,11 @@ public class Main {
                 case 5:
 
                 case 6:
+                    game = true;
+
             }
 
         }
+        System.out.println("Játékból kiléptél!");
     }
 }
