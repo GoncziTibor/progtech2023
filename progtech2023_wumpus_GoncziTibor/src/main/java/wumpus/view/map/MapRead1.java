@@ -11,7 +11,6 @@ public class MapRead1 {
     private char playerWay;
     private int mapSize;
 
-
     //beolvasás
     public MapRead1(String file) {
         try{
