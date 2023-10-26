@@ -14,11 +14,27 @@ public class Menu {
     }
 
     public void MainMenu(){
+        //pályaszerkesztés és a fájból beolvasás közül elég az egyiket implementálni
         System.out.println("(Pályaszerkesztés)");
         System.out.println("Fájlból beolvasás");
-        System.out.println("Adatbázisból betöltés");
-        System.out.println("Adatbázisba mentés");
+        System.out.println("(Adatbázisból betöltés)"); //ezt csak a 2. fázisban
+        System.out.println("(Adatbázisba mentés)"); //ezt csak a 2.fázisban
         System.out.println("Játszás");
-        System.out.println("Kilépés");
     }
+
+    /*public void MapEditing(){
+        System.out.println("Szerkesztés");
+        System.out.println("Kilépés");
+    }*/
+
+    public void GameMenu(){
+        System.out.println("Lépés");
+        System.out.println("Fordulás balra");
+        System.out.println("Fordulás jobbra");
+        System.out.println("Lövés");
+        System.out.println("Arany felvétele");
+        System.out.println("Felad");
+        //System.out.println("Halasztás");
+    }
+
 }
