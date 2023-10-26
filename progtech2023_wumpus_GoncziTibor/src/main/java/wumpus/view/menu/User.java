@@ -9,7 +9,7 @@ public class User {
         return scanner.nextLine();
     }
 
-    public static void greetUser(String username) {
-        System.out.println("Szia " + username + "!");
+    public static void greetUser(String userName) {
+        System.out.println("Szia " + userName + ", jó játékot!");
     }
 }
