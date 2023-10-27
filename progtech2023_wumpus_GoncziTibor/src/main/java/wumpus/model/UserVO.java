@@ -1,8 +1,5 @@
 package wumpus.model;
 
-import java.util.Arrays;
-import java.util.Objects;
-
 public class UserVO implements UserInterface{
     private char column;
     private int row;
@@ -10,7 +7,7 @@ public class UserVO implements UserInterface{
     private int arrows;
     private int gold;
 
-    public UserVO(char column, int row, char way, int arrows, int gold) {
+    public UserVO() {
         this.column = column;
         this.row = row;
         this.way = way;
