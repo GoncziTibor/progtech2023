@@ -59,6 +59,31 @@ public class UserVO implements UserInterface{
     }
 
     @Override
+    public void move() {
+
+    }
+
+    @Override
+    public void turnRight() {
+
+    }
+
+    @Override
+    public void turnLeft() {
+
+    }
+
+    @Override
+    public void shoot() {
+
+    }
+
+    @Override
+    public void pickupGold() {
+
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
