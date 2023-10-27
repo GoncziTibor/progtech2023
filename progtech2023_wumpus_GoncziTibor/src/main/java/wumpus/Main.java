@@ -4,6 +4,7 @@ import wumpus.model.MapVO;
 import wumpus.model.UserVO;
 import wumpus.view.map.MapRead1;
 import wumpus.view.map.MapRead2;
+import wumpus.view.map.Map;
 import wumpus.view.menu.Menu;
 import wumpus.view.menu.User;
 
@@ -23,6 +24,7 @@ public class Main {
         boolean game = false;
         boolean gameReady = false;
 
+        menu.mainMenu();
         while (!game){
             int answer = menu.getUserAnswer();
 
@@ -69,7 +71,7 @@ public class Main {
     }
 
     private static void gameStart2(){
-        MapRead2 map = new MapRead2("src/main/resources/wumpuszinput.txt");
+        Map map = new Map("src/main/resources/wumpuszinput.txt");
     }
 
 }

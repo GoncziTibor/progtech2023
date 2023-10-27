@@ -9,33 +9,37 @@ public class Menu {
         this.scanner = new Scanner(System.in);
     }
     public int getUserAnswer(){
-        System.out.println("Választható menük:");
+        System.out.println("Válassz egy menüt! Írd ide a kiválasztott menü számát:");
         return scanner.nextInt();
     }
 
     public void mainMenu(){
         //pályaszerkesztés és a fájból beolvasás közül elég az egyiket implementálni
-        System.out.println("(Pályaszerkesztés)");
-        System.out.println("Fájlból beolvasás");
-        System.out.println("(Adatbázisból betöltés)"); //ezt csak a 2. fázisban
-        System.out.println("(Adatbázisba mentés)"); //ezt csak a 2.fázisban
-        System.out.println("Játszás");
-        System.out.println("Kilépés");
+        System.out.println("- Itt vagy: Főmenü -");
+        System.out.println("1. (Pályaszerkesztés)");
+        System.out.println("2. Fájlból beolvasás");
+        System.out.println("3. (Adatbázisból betöltés)"); //ezt csak a 2. fázisban
+        System.out.println("4. (Adatbázisba mentés)"); //ezt csak a 2.fázisban
+        System.out.println("5. Játék");
+        System.out.println("6 .Kilépés");
     }
 
     public void mapEditing(){
-        System.out.println("Szerkesztés");
-        System.out.println("Kilépés");
+        System.out.println("- Itt vagy: Pályaszerkesztés -");
+        System.out.println("1. Szerkesztés");
+        System.out.println("2. Mentés");
+        System.out.println("3. Kilépés");
     }
 
     public void gameMenu(){
-        System.out.println("Lépés");
-        System.out.println("Fordulás balra");
-        System.out.println("Fordulás jobbra");
-        System.out.println("Lövés");
-        System.out.println("Arany felvétele");
-        System.out.println("Felad");
-        //System.out.println("Halasztás");
+        System.out.println("- Itt vagy: Játékmenü -");
+        System.out.println("1. Lépés");
+        System.out.println("2. Fordulás balra");
+        System.out.println("3. Fordulás jobbra");
+        System.out.println("4. Lövés");
+        System.out.println("5. Arany felvétele");
+        System.out.println("6. Felad");
+        //System.out.println("7. Halasztás");
     }
 
 }
