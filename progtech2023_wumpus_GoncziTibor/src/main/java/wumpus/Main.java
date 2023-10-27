@@ -46,11 +46,10 @@ public class Main {
                     //folyamatban
                     break;
                 case 5:
-                    if(gameReady){
-                        System.out.println("Jó játékot kívánok!");
-                        menu.gameMenu();
-                        gameStart2();
-                    } else
+                    gameReady = true;
+                    System.out.println("Jó játékot kívánok!");
+                    menu.gameMenu();
+                    gameStart2();
                     break;
                 case 6:
                     System.out.println("Kilépés kiválasztva!");
