@@ -25,7 +25,7 @@ public class Main {
 
         boolean exit = false;
         boolean game = false;
-        boolean read = false;
+        //boolean read = false;
 
         menu.mainMenu();
         while (!exit){
@@ -111,5 +111,6 @@ public class Main {
             }
 
         }
+
     }
 }
