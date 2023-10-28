@@ -13,39 +13,36 @@ public class Main {
         User.greetUser(userName);
 
         Menu menu = new Menu();
-        MapVO map = null;
 
+        boolean exit = false;
         boolean game = false;
-        boolean gameReady = false;
 
         menu.mainMenu();
-        while (!game){
+        while (!exit){
             int answer = menu.getUserAnswer();
 
             switch (answer) {
                 case 1:
-                    gameReady = true;
+                    game = true;
                     menu.mapEditing();
-                    if(gameReady = false){
+                    if(game = false){
                         menu.mainMenu();
                     }
                     break;
                 case 2:
-                    gameReady = true;
-                    gameStart1();
+                    game = true;
                     break;
                 case 3:
                     //folyamatban
-                    gameReady = true;
+                    game = true;
                     break;
                 case 4:
                     //folyamatban
                     break;
                 case 5:
-                    gameReady = true;
+                    game = true;
                     System.out.println("Jó játékot kívánok!");
                     menu.gameMenu();
-                    gameStart2();
                     break;
                 case 6:
                     System.out.println("Kilépés kiválasztva!");
@@ -59,13 +56,4 @@ public class Main {
 
         }
     }
-
-    private static void gameStart1() {
-        MapRead1 map = new MapRead1("src/main/resources/wumpuszinput.txt");
-    }
-
-    private static void gameStart2(){
-        Map map = new Map("src/main/resources/wumpuszinput.txt");
-    }
-
 }
