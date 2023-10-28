@@ -1,6 +1,6 @@
 package wumpus.model;
 
-public class Player{
+public class Player implements PlayerInterface{
     private char column;
     private int row;
     private char direction;
@@ -94,5 +94,28 @@ public class Player{
         return sb.toString();
     }
 
+    @Override
+    public void move() {
+        
+    }
 
+    @Override
+    public void turnRight() {
+
+    }
+
+    @Override
+    public void turnLeft() {
+
+    }
+
+    @Override
+    public void shoot() {
+
+    }
+
+    @Override
+    public void gold() {
+
+    }
 }
