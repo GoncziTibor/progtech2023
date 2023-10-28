@@ -1,7 +1,7 @@
 package wumpus;
 
-import wumpus.view.map.MapManager;
-import wumpus.view.map.MapWriter;
+import wumpus.view.map.MapHelp;
+import wumpus.view.map.MapRowAndColumn;
 import wumpus.view.menu.Menu;
 import wumpus.view.menu.User;
 import wumpus.model.Map;
@@ -39,11 +39,11 @@ public class Main {
                     menu.mapEditing();
                     break;
                 case 2:
-                    MapManager mapManager = new MapManager();
+                    MapHelp mapHelp = new MapHelp();
                     File file = new File("src/main/resources/wumpuszinput.txt");
                     InputStream inputStream = new FileInputStream(file);
-                    map = mapManager.readMap(inputStream);
-                    MapWriter.printMapAndHeroDetails(map);
+                    map = mapHelp.readMap(inputStream);
+                    MapRowAndColumn.printMapAndPlayerInfo(map);
                     game = true;
                     break;
                 case 3:
@@ -66,23 +66,23 @@ public class Main {
                             switch (gameAnswer) {
                                 case 1:
                                     map.getPlayer().move();
-                                    MapWriter.printMapAndHeroDetails(map);
+                                    MapRowAndColumn.printMapAndPlayerInfo(map);
                                     break;
                                 case 2:
                                     map.getPlayer().turnRight();
-                                    MapWriter.printMapAndHeroDetails(map);
+                                    MapRowAndColumn.printMapAndPlayerInfo(map);
                                     break;
                                 case 3:
                                     map.getPlayer().turnLeft();
-                                    MapWriter.printMapAndHeroDetails(map);
+                                    MapRowAndColumn.printMapAndPlayerInfo(map);
                                     break;
                                 case 4:
                                     map.getPlayer().shoot();
-                                    MapWriter.printMapAndHeroDetails(map);
+                                    MapRowAndColumn.printMapAndPlayerInfo(map);
                                     break;
                                 case 5:
                                     map.getPlayer().gold();
-                                    MapWriter.printMapAndHeroDetails(map);
+                                    MapRowAndColumn.printMapAndPlayerInfo(map);
                                     break;
                                 case 6:
                                     gameMenu = false;

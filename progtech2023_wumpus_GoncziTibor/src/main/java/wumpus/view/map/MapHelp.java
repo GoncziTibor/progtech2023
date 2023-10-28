@@ -10,7 +10,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class MapManager {
+public class MapHelp {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public Map readMap(InputStream inputStream) {
@@ -27,8 +27,8 @@ public class MapManager {
 
     public void printMap(Map map) {
         if (map != null) {
-            MapWriter mapWriter = new MapWriter();
-            MapWriter.mapPrinter(map);
+            MapRowAndColumn mapRowAndColumn = new MapRowAndColumn();
+            MapRowAndColumn.mapPrinter(map);
         } else {
             System.out.println("A pálya beolvasás közben hiba történt!");
         }
