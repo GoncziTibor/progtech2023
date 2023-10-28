@@ -9,7 +9,6 @@ public class Menu {
         this.scanner = new Scanner(System.in);
     }
     public int getUserAnswer(){
-        System.out.println("Válassz egy menüt! Írd ide a kiválasztott menü számát:");
         return scanner.nextInt();
     }
 
