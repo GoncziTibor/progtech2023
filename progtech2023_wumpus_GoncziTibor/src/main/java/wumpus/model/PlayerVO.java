@@ -1,19 +1,20 @@
 package wumpus.model;
 
-public class UserVO implements UserInterface{
+public class PlayerVO implements UserInterface{
     private char column;
     private int row;
     private char way;
     private int arrows;
     private int gold;
 
-    public UserVO() {
+    public PlayerVO() {
         this.column = column;
         this.row = row;
         this.way = way;
         this.arrows = arrows;
         this.gold = gold;
     }
+
 
     public char getColumn() {
         return column;
@@ -55,43 +56,20 @@ public class UserVO implements UserInterface{
         this.gold = gold;
     }
 
-    @Override
-    public void move() {
 
-    }
-
-    @Override
-    public void turnRight() {
-
-    }
-
-    @Override
-    public void turnLeft() {
-
-    }
-
-    @Override
-    public void shoot() {
-
-    }
-
-    @Override
-    public void pickupGold() {
-
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UserVO userVO = (UserVO) o;
+        PlayerVO playerVO = (PlayerVO) o;
 
-        if (column != userVO.column) return false;
-        if (row != userVO.row) return false;
-        if (way != userVO.way) return false;
-        if (arrows != userVO.arrows) return false;
-        return gold == userVO.gold;
+        if (column != playerVO.column) return false;
+        if (row != playerVO.row) return false;
+        if (way != playerVO.way) return false;
+        if (arrows != playerVO.arrows) return false;
+        return gold == playerVO.gold;
     }
 
     @Override
@@ -106,7 +84,7 @@ public class UserVO implements UserInterface{
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("UserVO{");
+        final StringBuffer sb = new StringBuffer("PlayerVO{");
         sb.append("column=").append(column);
         sb.append(", row=").append(row);
         sb.append(", way=").append(way);
@@ -114,5 +92,55 @@ public class UserVO implements UserInterface{
         sb.append(", gold=").append(gold);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public void move() {
+    }
+
+    @Override
+    public void turnRight() {
+        switch (this.way){
+            case 'E':
+                this.way = 'S';
+                break;
+            case 'S':
+                this.way = 'W';
+                break;
+            case 'W':
+                this.way = 'N';
+                break;
+            default:
+                this.way = 'E';
+                break;
+        }
+    }
+
+    @Override
+    public void turnLeft() {
+        switch (this.way){
+            case 'S':
+                this.way = 'E';
+                break;
+            case 'W':
+                this.way = 'S';
+                break;
+            case 'N':
+                this.way = 'W';
+                break;
+            default:
+                this.way = 'N';
+                break;
+        }
+    }
+
+    @Override
+    public void shoot() {
+        this.arrows--;
+    }
+
+    @Override
+    public void pickupGold() {
+
     }
 }

@@ -5,12 +5,12 @@ import java.util.Objects;
 
 public class MapVO {
     private char[][] map;
-    private UserVO userVO;
+    private PlayerVO playerVO;
     private int size;
 
-    public MapVO(char[][] map, UserVO userVO, int size) {
+    public MapVO(char[][] map, PlayerVO playerVO, int size) {
         this.map = map;
-        this.userVO = userVO;
+        this.playerVO = playerVO;
         this.size = size;
     }
 
@@ -18,8 +18,8 @@ public class MapVO {
         return map;
     }
 
-    public UserVO getUserVO() {
-        return userVO;
+    public PlayerVO getUserVO() {
+        return playerVO;
     }
 
     public int getSize() {
@@ -30,8 +30,8 @@ public class MapVO {
         this.map = map;
     }
 
-    public void setUserVO(UserVO userVO) {
-        this.userVO = userVO;
+    public void setUserVO(PlayerVO playerVO) {
+        this.playerVO = playerVO;
     }
 
     public void setSize(int size) {
@@ -47,14 +47,14 @@ public class MapVO {
 
         if (size != mapVO.size) return false;
         if (!Arrays.deepEquals(map, mapVO.map)) return false;
-        return Objects.equals(userVO, mapVO.userVO);
+        return Objects.equals(playerVO, mapVO.playerVO);
     }
 
     @Override
     public int hashCode() {
         int result = size;
         result = 31 * result + Arrays.deepHashCode(map);
-        result = 31 * result + (userVO != null ? userVO.hashCode() : 0);
+        result = 31 * result + (playerVO != null ? playerVO.hashCode() : 0);
         return result;
     }
 
@@ -63,7 +63,7 @@ public class MapVO {
         final StringBuffer sb = new StringBuffer("MapVO{");
         sb.append("size=").append(size);
         sb.append(", map=").append(map == null ? "null" : Arrays.asList(map).toString());
-        sb.append(", userVO=").append(userVO);
+        sb.append(", playerVO=").append(playerVO);
         sb.append('}');
         return sb.toString();
     }

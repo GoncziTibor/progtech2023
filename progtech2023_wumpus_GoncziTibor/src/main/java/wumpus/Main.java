@@ -1,9 +1,7 @@
 package wumpus;
 
 import wumpus.model.MapVO;
-import wumpus.model.UserVO;
 import wumpus.view.map.MapRead1;
-import wumpus.view.map.MapRead2;
 import wumpus.view.map.Map;
 import wumpus.view.menu.Menu;
 import wumpus.view.menu.User;
@@ -18,7 +16,6 @@ public class Main {
         User.greetUser(userName);
 
         Menu menu = new Menu();
-        UserVO userVO = new UserVO();
         MapVO map = null;
 
         boolean game = false;
