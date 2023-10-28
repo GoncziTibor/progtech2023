@@ -1,8 +1,5 @@
 package wumpus;
 
-import wumpus.model.MapVO;
-import wumpus.view.map.MapRead1;
-import wumpus.view.map.Map;
 import wumpus.view.menu.Menu;
 import wumpus.view.menu.User;
 
