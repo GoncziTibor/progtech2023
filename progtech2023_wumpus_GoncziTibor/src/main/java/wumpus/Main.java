@@ -59,10 +59,8 @@ public class Main {
                     game = true;
                     break;
                 case 3:
-                    game = true;
                     break;
                 case 4:
-                    game = true;
                     break;
                 case 5:
                     if (game) {
@@ -73,6 +71,7 @@ public class Main {
                         while (gameMenu) {
                             gameAnswer = menu.getUserAnswer();
                             System.out.println("Válassz egy menü pontot!:");
+
                             switch (gameAnswer) {
                                 case 1:
                                     map.getPlayer().move();
