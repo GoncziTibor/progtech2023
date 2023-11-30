@@ -9,7 +9,7 @@ public class Player implements PlayerInterface{
     private Map map;
 
     public String getCurrentPosition() {
-        return "" + (char) ('A' + this.getColumn()) + " oszlop " + (this.getRow() ) + ". sor";
+        return "" + (char) ('A' + this.getColumn()) + " oszlop " + (this.getRow() +1) + ". sor";
     }
 
     public Player(char column, int row, char direction, int arrows, int gold, Map map) {

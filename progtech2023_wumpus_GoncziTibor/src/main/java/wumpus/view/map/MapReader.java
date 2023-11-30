@@ -18,6 +18,7 @@ public class MapReader implements MapReaderInterface {
 
     @Override
     public Map readMap() throws MapReaderException {
+        Map mapvo = null;
         try {
             String firstLine = bufferedReader.readLine();
             String[] firstLineParts = firstLine.split(" ");
@@ -45,16 +46,15 @@ public class MapReader implements MapReaderInterface {
             }
             map[playerRow - 1][playerColumn] = 'H';
 
-            Map mapvo = new Map(size, map, null);
-            Player player = new Player(playerColumn, playerRow , direction, wumpusCounter, gold, mapvo);
-            player.setMap(mapvo);
-            mapvo.setPlayer(player);
+            Player player = new Player(playerColumn, playerRow - 1, direction, wumpusCounter, gold, new Map(size, map, null));
+            player.setDirection(direction);
+            player.setMap(new Map(size, map, player)); // Adjuk hozzá a Player-hez a térképet
 
-            return mapvo;
-            //mapvo = new Map(size, map, player);
+            mapvo = new Map(size, map, player);
         } catch (IOException exc) {
             exc.printStackTrace(); // PrintStackTrace hozzáadva a hibakereséshez
             throw new MapReaderException("A pálya beolvasás sikertelen!");
         }
+        return mapvo;
     }
 }
