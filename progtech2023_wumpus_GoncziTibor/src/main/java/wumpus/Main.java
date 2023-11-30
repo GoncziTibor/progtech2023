@@ -24,6 +24,7 @@ public class Main {
         Map map = new Map();
         MapHelp mapHelp = new MapHelp();
 
+
         boolean exit = false;
         boolean game = false;
 

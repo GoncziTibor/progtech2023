@@ -8,6 +8,8 @@ public class Map {
     private char[][] map;
     private Player player;
 
+
+
     public Map(int size, char[][] map, Player player) {
         this.size = size;
         this.map = map;
@@ -43,6 +45,10 @@ public class Map {
 
     public void setPlayerDirection(char direction) {
         player.setDirection(direction);
+    }
+
+    public String getPlayerPosition() {
+        return player.getCurrentPosition();
     }
 
     // További műveletek hozzáadása, például Map inicializálása, térkép kirajzolása, stb.

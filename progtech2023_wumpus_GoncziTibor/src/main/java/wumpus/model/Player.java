@@ -1,28 +1,34 @@
 package wumpus.model;
 
 public class Player implements PlayerInterface{
-    private char column;
+    private int column;
     private int row;
     private char direction;
     private int arrows;
     private int gold;
+    private Map map;
 
-    public Player(char column, int row, char direction, int arrows, int gold) {
+    public String getCurrentPosition() {
+        return "" + (char) ('A' + this.getColumn()) + " oszlop " + (this.getRow() ) + ". sor";
+    }
+
+    public Player(char column, int row, char direction, int arrows, int gold, Map map) {
         this.column = column;
         this.row = row;
         this.direction = direction;
         this.arrows = arrows;
         this.gold = gold;
+        this.map = map;
     }
 
     public Player() {
     }
 
-    public char getColumn() {
+    public int getColumn() {
         return column;
     }
 
-    public void setColumn(char column) {
+    public void setColumn(int column) {
         this.column = column;
     }
 
@@ -56,6 +62,14 @@ public class Player implements PlayerInterface{
 
     public void setGold(int gold) {
         this.gold = gold;
+    }
+
+    public Map getMap(){
+        return map;
+    }
+
+    public void setMap(Map map){
+        this.map = map;
     }
 
     @Override
@@ -98,7 +112,34 @@ public class Player implements PlayerInterface{
 
     @Override
     public void move() {
-        // Player mozgatásának implementációja
+        map.getMap()[this.row][this.column] = '_';
+
+        int newRow = this.row;
+        int newColumn = this.column;
+
+        switch (direction) {
+            case 'E':
+                newColumn++;
+                break;
+            case 'S':
+                newRow++;
+                break;
+            case 'W':
+                newColumn--;
+                break;
+            case 'N':
+                newRow--;
+                break;
+        }
+
+        // Ellenőrizzük, hogy az új mező a pályán belül van-e és nem fal
+        if (isValidMove(newRow, newColumn)) {
+            this.row = newRow;
+            this.column = newColumn;
+        }
+
+        map.getMap()[this.row][this.column] = 'H';
+        System.out.println("Mozgás történt. Új pozíció: [" + this.row + ", " + this.column + "]");
     }
 
     @Override
@@ -150,5 +191,11 @@ public class Player implements PlayerInterface{
     @Override
     public void collectGold() {
         // Player aranyfelveszésének implementációja
+    }
+
+    private boolean isValidMove(int newRow, int newColumn) {
+        return newRow >= 0 && newRow < map.getSize() &&
+                newColumn >= 0 && newColumn < map.getSize() &&
+                map.getMap()[newRow][newColumn] != 'W';
     }
 }
