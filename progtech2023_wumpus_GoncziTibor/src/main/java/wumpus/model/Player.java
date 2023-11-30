@@ -208,8 +208,48 @@ public class Player implements PlayerInterface{
 
     @Override
     public void shoot() {
-        // Player lövésének implementációja
-        this.arrows--;
+        if (arrows > 0) {
+            int targetRow = this.row;
+            int targetColumn = this.column;
+
+            switch (direction) {
+                case 'E':
+                    targetColumn++;
+                    break;
+                case 'S':
+                    targetRow++;
+                    break;
+                case 'W':
+                    targetColumn--;
+                    break;
+                case 'N':
+                    targetRow--;
+                    break;
+            }
+
+            // Ellenőrizd, hogy a célmező a pályán belül van-e és tartalmaz-e Wumpust (U)
+            if (isValidMove(targetRow, targetColumn)) {
+                if (map.getMap()[targetRow][targetColumn] == 'U') {
+                    map.getMap()[targetRow][targetColumn] = '_';
+                    System.out.println("Nyíl eltalálta a Wumpust az irányba!");
+                } else {
+                    System.out.println("A lövés nem talált el senkit.");
+                }
+            } else {
+                System.out.println("A lövés a falnak ütközött.");
+            }
+
+            // Csökkentsd a nyilak számát
+            arrows--;
+            System.out.println("Új nyilak száma: " + arrows);
+
+            // Ellenőrizd, hogy van-e még nyilad
+            if (arrows == 0) {
+                System.out.println("Nincs több nyilad!");
+            }
+        } else {
+            System.out.println("Nincs több nyilad!");
+        }
     }
 
     @Override
