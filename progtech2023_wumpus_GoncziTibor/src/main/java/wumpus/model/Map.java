@@ -41,6 +41,8 @@ public class Map {
         this.player = player;
     }
 
+    // További műveletek hozzáadása, például Map inicializálása, térkép kirajzolása, stb.
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

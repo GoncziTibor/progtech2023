@@ -38,7 +38,7 @@ public class Menu {
         System.out.println("4. Lövés");
         System.out.println("5. Arany felvétele");
         System.out.println("6. Felad");
-        //System.out.println("7. Halasztás");
+        System.out.println("7. Halasztás");
     }
 
 }

@@ -3,6 +3,9 @@ package wumpus.view.map;
 import wumpus.model.Map;
 
 public class MapRowAndColumn {
+    public MapRowAndColumn() {
+    }
+
     public static void mapPrinter(Map map) {
         char[][] mapData = map.getMap();
         int rowCount = 1;
@@ -24,9 +27,9 @@ public class MapRowAndColumn {
         }
     }
 
-    public static void printMapAndPlayerInfo(Map map){
-        MapRowAndColumn.mapPrinter(map);
-        System.out.println("Ennyi íja vana hősnek: " + map.getPlayer().getArrows());
+    public static void printMapAndPlayerInfo(Map map) {
+        mapPrinter(map);
+        System.out.println("Ennyi íja van a hősnek: " + map.getPlayer().getArrows());
         System.out.println("Ebbe az irányba áll a hős: " + map.getPlayer().getDirection());
     }
 }

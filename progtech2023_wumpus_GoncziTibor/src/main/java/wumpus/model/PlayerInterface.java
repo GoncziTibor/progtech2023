@@ -1,13 +1,13 @@
 package wumpus.model;
 
 public interface PlayerInterface {
-    public void move();
+    void move();
 
-    public void turnRight();
+    void turnRight();
 
-    public void turnLeft();
+    void turnLeft();
 
-    public void shoot();
+    void shoot();
 
-    public void gold();
+    void collectGold();
 }

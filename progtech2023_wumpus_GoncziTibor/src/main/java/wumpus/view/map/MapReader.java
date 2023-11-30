@@ -17,7 +17,7 @@ public class MapReader implements MapReaderInterface {
     }
 
     @Override
-    public Map readMap() throws MapReaderException{
+    public Map readMap() throws MapReaderException {
         Map mapvo;
         try {
             String firstLine = bufferedReader.readLine();
@@ -34,26 +34,24 @@ public class MapReader implements MapReaderInterface {
             int gold = 0;
             int wumpusCounter = 0;
             char[][] map = new char[size][size];
+
             for (int i = 0; i < size; i++) {
                 String row = bufferedReader.readLine();
                 for (int j = 0; j < size; j++) {
                     map[i][j] = row.charAt(j);
-                    if(row.charAt(j) == 'U'){
+                    if (row.charAt(j) == 'U') {
                         wumpusCounter++;
                     }
                 }
             }
-            map[playerRow-1][playerColumn] = 'H';
-
+            map[playerRow - 1][playerColumn] = 'H';
 
             Player player = new Player(playerColumn, playerRow, direction, wumpusCounter, gold);
             mapvo = new Map(size, map, player);
         } catch (IOException exc) {
-            exc.getMessage();
+            exc.printStackTrace(); // PrintStackTrace hozzáadva a hibakereséshez
             throw new MapReaderException("A pálya beolvasás sikertelen!");
         }
         return mapvo;
-
     }
-
 }

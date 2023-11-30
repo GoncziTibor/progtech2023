@@ -72,6 +72,8 @@ public class Player implements PlayerInterface{
         return gold == player.gold;
     }
 
+    // További műveletek hozzáadása, például Player mozgatása, lövés, stb.
+
     @Override
     public int hashCode() {
         int result = column;
@@ -96,10 +98,12 @@ public class Player implements PlayerInterface{
 
     @Override
     public void move() {
+        // Player mozgatásának implementációja
     }
 
     @Override
     public void turnRight() {
+        // Player jobbra fordulásának implementációja
         switch (this.direction){
             case 'E':
                 this.direction = 'S';
@@ -118,6 +122,7 @@ public class Player implements PlayerInterface{
 
     @Override
     public void turnLeft() {
+        // Player balra fordulásának implementációja
         switch (this.direction){
             case 'S':
                 this.direction = 'E';
@@ -136,10 +141,12 @@ public class Player implements PlayerInterface{
 
     @Override
     public void shoot() {
+        // Player lövésének implementációja
         this.arrows--;
     }
 
     @Override
-    public void gold() {
+    public void collectGold() {
+        // Player aranyfelveszésének implementációja
     }
 }

@@ -81,7 +81,7 @@ public class Main {
                                     MapRowAndColumn.printMapAndPlayerInfo(map);
                                     break;
                                 case 5:
-                                    map.getPlayer().gold();
+                                    map.getPlayer().collectGold();
                                     MapRowAndColumn.printMapAndPlayerInfo(map);
                                     break;
                                 case 6:
