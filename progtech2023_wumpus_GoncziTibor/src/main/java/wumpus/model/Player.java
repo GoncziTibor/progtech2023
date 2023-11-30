@@ -1,5 +1,7 @@
 package wumpus.model;
 
+import wumpus.view.map.MapRowAndColumn;
+
 public class Player implements PlayerInterface{
     private int column;
     private int row;
@@ -134,11 +136,25 @@ public class Player implements PlayerInterface{
 
         // Ellenőrizzük, hogy az új mező a pályán belül van-e és nem fal
         if (isValidMove(newRow, newColumn)) {
-            this.row = newRow;
-            this.column = newColumn;
+            // Ellenőrizzük, hogy van-e verem (P) az új mezőn
+            if (map.getMap()[newRow][newColumn] == 'P') {
+                if (this.arrows > 0) {
+                    this.arrows--; // Ha van verem, veszítünk egy nyilat
+                    System.out.println("Ez egy verem! Elvesztettél egy nyilat. Új nyilak száma: " + this.arrows);
+                    map.getMap()[this.row][this.column] = '_'; // Régi pozícióra írjuk az alapértelmezett jellemzőt
+                    this.row = newRow;
+                    this.column = newColumn;
+                    map.getMap()[this.row][this.column] = 'H'; // Új pozícióra állítjuk a 'H'-t
+                } else {
+                    System.out.println("Nincs több nyilad. Nem léphetsz a verembe!");
+                }
+            } else {
+                this.row = newRow;
+                this.column = newColumn;
+                map.getMap()[this.row][this.column] = 'H'; // Új pozícióra állítjuk a 'H'-t
+            }
         }
-
-        map.getMap()[this.row][this.column] = 'H';
+        map.getMap()[this.row][this.column] = 'H'; // Új pozíció beállítása H-re
         System.out.println("Mozgás történt. Új pozíció: [" + this.row + ", " + this.column + "]");
     }
 

@@ -79,15 +79,15 @@ public class Main {
                                     MapRowAndColumn.printMapAndPlayerInfo(map);
                                     break;
                                 case 2:
-                                    map.getPlayer().turnRight();
-                                    char newDirectionRight = map.getPlayer().getDirection();
-                                    map.setPlayerDirection(newDirectionRight);
-                                    MapRowAndColumn.printMapAndPlayerInfo(map);
-                                    break;
-                                case 3:
                                     map.getPlayer().turnLeft();
                                     char newDirectionLeft = map.getPlayer().getDirection();
                                     map.setPlayerDirection(newDirectionLeft);
+                                    MapRowAndColumn.printMapAndPlayerInfo(map);
+                                    break;
+                                case 3:
+                                    map.getPlayer().turnRight();
+                                    char newDirectionRight = map.getPlayer().getDirection();
+                                    map.setPlayerDirection(newDirectionRight);
                                     MapRowAndColumn.printMapAndPlayerInfo(map);
                                     break;
                                 case 4:
