@@ -1,6 +1,7 @@
 package wumpus.model;
 
 import wumpus.view.map.MapRowAndColumn;
+import wumpus.view.menu.Menu;
 
 public class Player implements PlayerInterface{
     private int column;
@@ -9,6 +10,7 @@ public class Player implements PlayerInterface{
     private int arrows;
     private int gold;
     private Map map;
+
 
     public String getCurrentPosition() {
         return "" + (char) ('A' + this.getColumn()) + " oszlop " + (this.getRow() +1) + ". sor";
@@ -136,8 +138,15 @@ public class Player implements PlayerInterface{
 
         // Ellenőrizzük, hogy az új mező a pályán belül van-e és nem fal
         if (isValidMove(newRow, newColumn)) {
-            // Ellenőrizzük, hogy van-e verem (P) az új mezőn
-            if (map.getMap()[newRow][newColumn] == 'P') {
+            // Ellenőrizzük, hogy van-e wumpus (U) az új mezőn
+            if (map.getMap()[newRow][newColumn] == 'U') {
+                System.out.println("MEGHALTÁL! A wumpus megölt téged. A játék véget ért.");
+                map.getMap()[this.row][this.column] = '_'; // Régi pozícióra írjuk az alapértelmezett jellemzőt
+                this.row = newRow;
+                this.column = newColumn;
+                map.getMap()[this.row][this.column] = 'H'; // Új pozícióra állítjuk a 'H'-t
+                // Kezdd újra a játékot vagy végezd el a szükséges lépéseket a játék újrakezdéséhez
+            } else if (map.getMap()[newRow][newColumn] == 'P') {
                 if (this.arrows > 0) {
                     this.arrows--; // Ha van verem, veszítünk egy nyilat
                     System.out.println("Ez egy verem! Elvesztettél egy nyilat. Új nyilak száma: " + this.arrows);
@@ -154,8 +163,9 @@ public class Player implements PlayerInterface{
                 map.getMap()[this.row][this.column] = 'H'; // Új pozícióra állítjuk a 'H'-t
             }
         }
+
         map.getMap()[this.row][this.column] = 'H'; // Új pozíció beállítása H-re
-        System.out.println("Mozgás történt. Új pozíció: [" + this.row + ", " + this.column + "]");
+        MapRowAndColumn.mapPrinter(map); // Pálya kiírása a mozgás után
     }
 
     @Override
@@ -175,7 +185,6 @@ public class Player implements PlayerInterface{
                 this.direction = 'E';
                 break;
         }
-        System.out.println("Fordultál jobbra. Új irány: " + this.direction);
     }
 
     @Override
@@ -195,7 +204,6 @@ public class Player implements PlayerInterface{
                 this.direction = 'W';
                 break;
         }
-        System.out.println("Fordultál balra. Új irány: " + this.direction);
     }
 
     @Override

@@ -65,12 +65,11 @@ public class Main {
                     break;
                 case 5:
                     if (game) {
-                        int gameAnswer;
                         boolean gameMenu = true;
                         menu.gameMenu();
 
                         while (gameMenu) {
-                            gameAnswer = menu.getUserAnswer();
+                            int gameAnswer = menu.getUserAnswer();
                             System.out.println("Válassz egy menü pontot!:");
 
                             switch (gameAnswer) {
