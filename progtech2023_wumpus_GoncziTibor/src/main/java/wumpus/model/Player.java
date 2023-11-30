@@ -114,16 +114,20 @@ public class Player implements PlayerInterface{
             case 'W':
                 this.direction = 'N';
                 break;
-            default:
+            case 'N':
                 this.direction = 'E';
                 break;
         }
+        System.out.println("Fordultál jobbra. Új irány: " + this.direction);
     }
 
     @Override
     public void turnLeft() {
         // Player balra fordulásának implementációja
         switch (this.direction){
+            case 'E':
+                this.direction = 'N';
+                break;
             case 'S':
                 this.direction = 'E';
                 break;
@@ -133,10 +137,8 @@ public class Player implements PlayerInterface{
             case 'N':
                 this.direction = 'W';
                 break;
-            default:
-                this.direction = 'N';
-                break;
         }
+        System.out.println("Fordultál balra. Új irány: " + this.direction);
     }
 
     @Override

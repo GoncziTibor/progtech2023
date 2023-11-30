@@ -41,6 +41,10 @@ public class Map {
         this.player = player;
     }
 
+    public void setPlayerDirection(char direction) {
+        player.setDirection(direction);
+    }
+
     // További műveletek hozzáadása, például Map inicializálása, térkép kirajzolása, stb.
 
     @Override

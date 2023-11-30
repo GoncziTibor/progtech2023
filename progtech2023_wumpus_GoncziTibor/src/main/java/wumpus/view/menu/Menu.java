@@ -9,7 +9,13 @@ public class Menu {
         this.scanner = new Scanner(System.in);
     }
     public int getUserAnswer(){
-        return scanner.nextInt();
+        while (!scanner.hasNextInt()) {
+            System.out.println("Kérlek, adj meg egy érvényes számot!");
+            scanner.next();
+        }
+        int answer = scanner.nextInt();
+        scanner.nextLine();
+        return answer;
     }
 
     public void mainMenu(){

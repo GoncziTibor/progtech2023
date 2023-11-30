@@ -22,24 +22,36 @@ public class Main {
 
         Menu menu = new Menu();
         Map map = new Map();
+        MapHelp mapHelp = new MapHelp();
 
         boolean exit = false;
         boolean game = false;
-        //boolean read = false;
 
         menu.mainMenu();
-        while (!exit){
+        while (!exit) {
             int answer = menu.getUserAnswer();
 
             switch (answer) {
                 case 1:
-                    //elég csak az egyiket implementálni
-                    boolean mapEditor = true;
-                    System.out.println("Válassz egy menüt pontot!:");
+                    // Elég csak az egyiket implementálni
+                    boolean mapEditorMenu = true;
+                    //System.out.println("Válassz egy menüt pontot!:");
                     menu.mapEditing();
+
+                    while(mapEditorMenu){
+                            int answerMapEditor = menu.getUserAnswer();
+                            switch (answerMapEditor) {
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    mapEditorMenu = false;
+                                    menu.mainMenu();
+                            }
+                    }
                     break;
                 case 2:
-                    MapHelp mapHelp = new MapHelp();
                     File file = new File("src/main/resources/wumpuszinput.txt");
                     InputStream inputStream = new FileInputStream(file);
                     map = mapHelp.readMap(inputStream);
@@ -47,12 +59,10 @@ public class Main {
                     game = true;
                     break;
                 case 3:
-                    //folyamatban (2. fázis)
                     game = true;
                     break;
                 case 4:
-                    //folyamatban (2. fázis)
-                    game= true;
+                    game = true;
                     break;
                 case 5:
                     if (game) {
@@ -62,7 +72,7 @@ public class Main {
 
                         while (gameMenu) {
                             gameAnswer = menu.getUserAnswer();
-                            System.out.println("Válassz egy menüt pontot!:");
+                            System.out.println("Válassz egy menü pontot!:");
                             switch (gameAnswer) {
                                 case 1:
                                     map.getPlayer().move();
@@ -70,10 +80,14 @@ public class Main {
                                     break;
                                 case 2:
                                     map.getPlayer().turnRight();
+                                    char newDirectionRight = map.getPlayer().getDirection();
+                                    map.setPlayerDirection(newDirectionRight);
                                     MapRowAndColumn.printMapAndPlayerInfo(map);
                                     break;
                                 case 3:
                                     map.getPlayer().turnLeft();
+                                    char newDirectionLeft = map.getPlayer().getDirection();
+                                    map.setPlayerDirection(newDirectionLeft);
                                     MapRowAndColumn.printMapAndPlayerInfo(map);
                                     break;
                                 case 4:
@@ -89,15 +103,17 @@ public class Main {
                                     menu.mainMenu();
                                     break;
                                 case 7:
-                                    //halasztás
+                                    // Halasztás
                                 default:
-                                    System.out.println("Olyan menüpontot választottál ami nem létezik, kérlek válassz újra!");
+                                    System.out.println("Ismeretlen parancs. Próbáld újra!");
+                                    System.out.println("Olyan menüpontot választottál, ami nem létezik, kérlek válassz újra!");
                                     break;
                             }
+                            MapRowAndColumn.printMapAndPlayerInfo(map);
                         }
                     } else {
-                        //csak a fájlból beolvasás van implementálva
-                        System.out.println("Válaszd ki előszőr a fájlból beolvasás lehetőségét! (2)");
+                        // Csak a fájlból beolvasás van implementálva
+                        System.out.println("Válaszd ki először a fájlból beolvasás lehetőségét! (2)");
                     }
                     break;
                 case 6:
@@ -105,12 +121,8 @@ public class Main {
                     System.out.println("Viszlát " + userName + " ");
                     System.exit(0);
                 default:
-                    System.out.println("Olyan menüpontot választottál ami nem létezik, kérlek válassz újra!");
-
-
+                    System.out.println("Olyan menüpontot választottál, ami nem létezik, kérlek válassz újra!");
             }
-
         }
-
     }
 }
