@@ -5,7 +5,9 @@ import wumpus.view.menu.Menu;
 
 public class Player implements PlayerInterface{
     private int column;
+    private int initialColumn;
     private int row;
+    private int initialRow;
     private char direction;
     private int arrows;
     private int gold;
@@ -33,6 +35,8 @@ public class Player implements PlayerInterface{
         this.gold = gold;
         this.map = map;
         this.stepCount = 0;
+        this.initialRow = row;
+        this.initialColumn = column;
     }
 
     public Player() {
@@ -146,39 +150,41 @@ public class Player implements PlayerInterface{
                 break;
         }
 
-        // Ellenőrizzük, hogy az új mező a pályán belül van-e és nem fal
         if (isValidMove(newRow, newColumn)) {
             this.row = newRow;
             this.column = newColumn;
-            this.stepCount++; // Lépésszám növelése
-            // Ellenőrizzük, hogy van-e wumpus (U) az új mezőn
+            this.stepCount++; // lépésszám növelése
             if (map.getMap()[newRow][newColumn] == 'U') {
                 System.out.println("MEGHALTÁL! A wumpus megölt téged. A játék véget ért.");
-                map.getMap()[this.row][this.column] = '_'; // Régi pozícióra írjuk az alapértelmezett jellemzőt
+                map.getMap()[this.row][this.column] = '_';
                 this.row = newRow;
                 this.column = newColumn;
-                map.getMap()[this.row][this.column] = 'H'; // Új pozícióra állítjuk a 'H'-t
-                // Kezdd újra a játékot vagy végezd el a szükséges lépéseket a játék újrakezdéséhez
+                map.getMap()[this.row][this.column] = 'H';
             } else if (map.getMap()[newRow][newColumn] == 'P') {
                 if (this.arrows > 0) {
-                    this.arrows--; // Ha van verem, veszítünk egy nyilat
+                    this.arrows--;
                     System.out.println("Ez egy verem! Elvesztettél egy nyilat. Új nyilak száma: " + this.arrows);
-                    map.getMap()[this.row][this.column] = '_'; // Régi pozícióra írjuk az alapértelmezett jellemzőt
+                    map.getMap()[this.row][this.column] = '_';
                     this.row = newRow;
                     this.column = newColumn;
-                    map.getMap()[this.row][this.column] = 'H'; // Új pozícióra állítjuk a 'H'-t
+                    map.getMap()[this.row][this.column] = 'H';
                 } else {
                     System.out.println("Nincs több nyilad. Nem léphetsz a verembe!");
                 }
             } else {
                 this.row = newRow;
                 this.column = newColumn;
-                map.getMap()[this.row][this.column] = 'H'; // Új pozícióra állítjuk a 'H'-t
+                map.getMap()[this.row][this.column] = 'H';
             }
         }
 
-        map.getMap()[this.row][this.column] = 'H'; // Új pozíció beállítása H-re
-        MapRowAndColumn.mapPrinter(map); // Pálya kiírása a mozgás után
+        map.getMap()[this.row][this.column] = 'H';
+
+        if (this.row == initialRow && this.column == initialColumn && this.gold > 0) {
+            System.out.println("Gratulálok! Sikeresen teljesítetted a játékot!");
+        }
+
+        MapRowAndColumn.mapPrinter(map);
     }
 
     @Override
@@ -240,7 +246,6 @@ public class Player implements PlayerInterface{
                     break;
             }
 
-            // Ellenőrizd, hogy a célmező a pályán belül van-e és tartalmaz-e Wumpust (U)
             if (isValidMove(targetRow, targetColumn)) {
                 if (map.getMap()[targetRow][targetColumn] == 'U') {
                     map.getMap()[targetRow][targetColumn] = '_';
@@ -251,12 +256,8 @@ public class Player implements PlayerInterface{
             } else {
                 System.out.println("A lövés a falnak ütközött.");
             }
-
-            // Csökkentsd a nyilak számát
-            arrows--;
+            arrows--;//nyíl csökkenése
             System.out.println("Új nyilak száma: " + arrows);
-
-            // Ellenőrizd, hogy van-e még nyilad
             if (arrows == 0) {
                 System.out.println("Nincs több nyilad!");
             }
@@ -267,7 +268,6 @@ public class Player implements PlayerInterface{
 
     @Override
     public void collectGold() {
-        // Ellenőrizzük, hogy az adott irányban van-e arany (G)
         int newRow = this.row;
         int newColumn = this.column;
 
@@ -286,15 +286,13 @@ public class Player implements PlayerInterface{
                 break;
         }
 
-        // Ellenőrizzük, hogy az új mező a pályán belül van-e és tartalmaz-e aranyat
         if (isValidMove(newRow, newColumn) && map.getMap()[newRow][newColumn] == 'G') {
-            // Ha van arany, gyűjtsük össze
-            this.gold++;
+            this.gold++;//arany felvesz
             System.out.println("Arany gyűjtve! Ennyi aranyad van most: " + this.gold);
-            map.getMap()[this.row][this.column] = '_'; // Régi pozícióra írjuk az alapértelmezett jellemzőt
+            map.getMap()[this.row][this.column] = '_';
             this.row = newRow;
             this.column = newColumn;
-            map.getMap()[this.row][this.column] = 'H'; // Új pozícióra állítjuk a 'H'-t
+            map.getMap()[this.row][this.column] = 'H';
         } else {
             System.out.println("Nincs arany az adott irányban.");
         }
