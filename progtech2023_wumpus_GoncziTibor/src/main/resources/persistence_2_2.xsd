@@ -5,18 +5,18 @@
   xmlns:persistence="http://xmlns.jcp.org/xml/ns/persistence"
   elementFormDefault="qualified" 
   attributeFormDefault="unqualified" 
-  version="2.1">
+  version="2.2">
 
   <xsd:annotation>
     <xsd:documentation>
-      @(#)persistence_2_1.xsd  2.1  February 4, 2013
+      @(#)persistence_2_2.xsd 2.2  July 17, 2017
     </xsd:documentation>
   </xsd:annotation>
 
   <xsd:annotation>
     <xsd:documentation>
 
-  Copyright (c) 2008  - 2013 Oracle Corporation. All rights reserved. 
+  Copyright (c) 2008  - 2017 Oracle Corporation. All rights reserved. 
   
   This program and the accompanying materials are made available under the 
   terms of the Eclipse Public License v1.0 and Eclipse Distribution License v. 1.0 
@@ -26,7 +26,7 @@
   http://www.eclipse.org/org/documents/edl-v10.php.
   
   Contributors:
-      Linda DeMichiel - Java Persistence 2.1, Version 2.1 (February 4, 2013)
+      Linda DeMichiel - Java Persistence 2.2, Version 2.2 (July 7, 2017)
       Specification available from http://jcp.org/en/jsr/detail?id=338
  
     </xsd:documentation>
@@ -50,8 +50,8 @@
       <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-          http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
-        version="2.1">
+          http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+        version="2.2">
           ...
       </persistence>
 
@@ -295,7 +295,7 @@
         </xsd:element>
       </xsd:sequence>
       <xsd:attribute name="version" type="persistence:versionType" 
-                     fixed="2.1" use="required"/>
+                     fixed="2.2" use="required"/>
     </xsd:complexType>
   </xsd:element>
 

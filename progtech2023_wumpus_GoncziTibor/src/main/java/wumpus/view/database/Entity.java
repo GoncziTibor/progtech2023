@@ -1,8 +1,7 @@
 package wumpus.view.database;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.EntityTransaction;
 
 public class Entity {
     public static void main(String[] args) {
@@ -13,13 +12,13 @@ public class Entity {
         transaction.begin();
 
         // Példa: Új játékos hozzáadása
-        MyEntitiy player = new MyEntitiy();
+        PlayerData player = new PlayerData();
         player.setPlayerName("John Doe");
         player.setVictories(3);
         em.persist(player);
 
         // Példa: Játékos adatainak lekérdezése
-        MyEntitiy retrievedPlayer = em.find(MyEntitiy.class, 1); // Példa: 1-es azonosítójú játékos lekérése
+        PlayerData retrievedPlayer = em.find(PlayerData.class, 1); // Példa: 1-es azonosítójú játékos lekérése
 
         // Példa: Tranzakció befejezése
         transaction.commit();
