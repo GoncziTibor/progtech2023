@@ -1,17 +1,15 @@
 package wumpus.view.database;
 
-import wumpus.view.database.GameData;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.File;
 
-
 public class XmlDataSaver {
 
     public static void saveGameData(GameData gameData, String filePath) {
         try {
+            File file = new File(filePath);
             JAXBContext context = JAXBContext.newInstance(GameData.class);
             Marshaller marshaller = context.createMarshaller();
 
@@ -19,7 +17,7 @@ public class XmlDataSaver {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
             // Menti az adatokat XML-be
-            marshaller.marshal(gameData, new File(filePath));
+            marshaller.marshal(gameData, file);
 
             System.out.println("Adatok sikeresen elmentve az XML-be.");
         } catch (JAXBException e) {
