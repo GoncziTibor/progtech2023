@@ -1,9 +1,10 @@
 package wumpus.view.database;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "players")
-public class PlayerData {
+public class MyEntitiy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -13,14 +14,6 @@ public class PlayerData {
 
     @Column(name = "victories")
     private int victories;
-
-    @Column(name = "player_data", columnDefinition = "TEXT")
-    private String playerData;
-
-    @Column(name = "current_game_state", columnDefinition = "TEXT")
-    private String currentGameState;
-
-    // Getterek és setterek...
 
     public int getId() {
         return id;
@@ -44,21 +37,5 @@ public class PlayerData {
 
     public void setVictories(int victories) {
         this.victories = victories;
-    }
-
-    public String getPlayerData() {
-        return playerData;
-    }
-
-    public void setPlayerData(String playerData) {
-        this.playerData = playerData;
-    }
-
-    public String getCurrentGameState() {
-        return currentGameState;
-    }
-
-    public void setCurrentGameState(String currentGameState) {
-        this.currentGameState = currentGameState;
     }
 }
