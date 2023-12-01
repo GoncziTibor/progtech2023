@@ -3,7 +3,7 @@ package wumpus.view.database;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-public class Entity {
+public class MyEntity {
     public static void main(String[] args) {
         EntityManager em = JpaUtil.getEntityManager();
 
