@@ -10,6 +10,7 @@ public class Player implements PlayerInterface{
     private int arrows;
     private int gold;
     private Map map;
+    private int stepCount;
 
 
     public String getCurrentPosition() {
@@ -20,6 +21,10 @@ public class Player implements PlayerInterface{
         return this.gold;
     }
 
+    public int getStepCount(){
+        return stepCount;
+    }
+
     public Player(char column, int row, char direction, int arrows, int gold, Map map) {
         this.column = column;
         this.row = row;
@@ -27,6 +32,7 @@ public class Player implements PlayerInterface{
         this.arrows = arrows;
         this.gold = gold;
         this.map = map;
+        this.stepCount = 0;
     }
 
     public Player() {
@@ -142,6 +148,9 @@ public class Player implements PlayerInterface{
 
         // Ellenőrizzük, hogy az új mező a pályán belül van-e és nem fal
         if (isValidMove(newRow, newColumn)) {
+            this.row = newRow;
+            this.column = newColumn;
+            this.stepCount++; // Lépésszám növelése
             // Ellenőrizzük, hogy van-e wumpus (U) az új mezőn
             if (map.getMap()[newRow][newColumn] == 'U') {
                 System.out.println("MEGHALTÁL! A wumpus megölt téged. A játék véget ért.");

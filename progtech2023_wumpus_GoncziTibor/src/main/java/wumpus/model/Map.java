@@ -55,6 +55,10 @@ public class Map {
         return player.getCurrentGold();
     }
 
+    public int getPlayerStepCount(){
+        return player.getStepCount();
+    }
+
     // További műveletek hozzáadása, például Map inicializálása, térkép kirajzolása, stb.
 
     @Override
