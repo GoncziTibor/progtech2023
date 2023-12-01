@@ -1,14 +1,34 @@
 package wumpus.view.database;
+import javax.persistence.*;
 
-import java.util.Map;
+@Entity
+@Table(name = "players")
+public class PlayerData {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-public class GameData {
+    @Column(name = "player_name")
     private String playerName;
+
+    @Column(name = "victories")
     private int victories;
-    private Map<String, Object> gameData;
+
+    @Column(name = "player_data", columnDefinition = "TEXT")
+    private String playerData;
+
+    @Column(name = "current_game_state", columnDefinition = "TEXT")
     private String currentGameState;
 
     // Getterek és setterek...
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getPlayerName() {
         return playerName;
@@ -26,12 +46,12 @@ public class GameData {
         this.victories = victories;
     }
 
-    public Map<String, Object> getGameData() {
-        return gameData;
+    public String getPlayerData() {
+        return playerData;
     }
 
-    public void setGameData(Map<String, Object> gameData) {
-        this.gameData = gameData;
+    public void setPlayerData(String playerData) {
+        this.playerData = playerData;
     }
 
     public String getCurrentGameState() {
@@ -42,4 +62,3 @@ public class GameData {
         this.currentGameState = currentGameState;
     }
 }
-
