@@ -1,7 +1,6 @@
 package wumpus.view.map;
 
 import wumpus.model.Map;
-import wumpus.model.Player;
 
 
 public class MapRowAndColumn {
@@ -31,10 +30,10 @@ public class MapRowAndColumn {
 
     public static void printMapAndPlayerInfo(Map map) {
         mapPrinter(map);
-        System.out.println("Ennyi íja van a hősnek: " + map.getPlayer().getArrows());
-        System.out.println("Ebbe az irányba áll a hős: " + map.getPlayer().getDirection());
-        System.out.println("Jelenlegi pozíciója a hősnek: " + map.getPlayerPosition());
-        System.out.println("Ennyi aranya van a hősnek: " + map.getPlayerGold());
+        System.out.println("Ennyi íja van a hősnek: " + map.getPlayer().getArrows());//íj száma
+        System.out.println("Ebbe az irányba áll a hős: " + map.getPlayer().getDirection());//irány
+        System.out.println("Jelenlegi pozíciója a hősnek: " + map.getPlayerPosition());//jelenlegi pozíció
+        System.out.println("Ennyi aranya van a hősnek: " + map.getPlayerGold());//arany száma
         System.out.println("");
     }
 }
