@@ -73,7 +73,6 @@ public class Main {
                         System.out.println("Játék adatai betöltve:");
                         System.out.println("Player Name: " + loadedGameData.getPlayerName());
                         System.out.println("Victories: " + loadedGameData.getVictories());
-                        // Egyéb adatok kiírása...
                     } else {
                         System.out.println("A játék adatainak betöltése sikertelen!");
                     }
@@ -86,7 +85,7 @@ public class Main {
                     GameData gameData = new GameData();
                     gameData.setPlayerName(playerToSave.getPlayerName());
                     gameData.setVictories(playerToSave.getVictories());
-                    // Egyéb GameData információk beállítása...
+                    // Egyéb GameData információk beállítása
 
                     databaseSaver.saveGameData(gameData);
                     break;
