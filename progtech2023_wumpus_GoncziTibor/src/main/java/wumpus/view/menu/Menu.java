@@ -23,8 +23,8 @@ public class Menu {
         System.out.println("- Itt vagy: Főmenü -");
         System.out.println("1. (Pályaszerkesztés)");
         System.out.println("2. Fájlból beolvasás");
-        System.out.println("3. (Adatbázisból betöltés)"); //ezt csak a 2. fázisban
-        System.out.println("4. (Adatbázisba mentés)"); //ezt csak a 2.fázisban
+        System.out.println("3. Adatbázisból betöltés"); //ezt csak a 2. fázisban
+        System.out.println("4. Adatbázisba mentés"); //ezt csak a 2.fázisban
         System.out.println("5. Játék");
         System.out.println("6 .Kilépés");
     }

@@ -130,6 +130,9 @@ public class Main {
                                     break;
                                 case 7:
                                     // Halasztás: a fő switch case 3. részénél van megoldva
+                                    gameMenu = false;
+                                    menu.mainMenu();
+                                    break;
                                 default:
                                     System.out.println("Ismeretlen parancs. Próbáld újra!");
                                     System.out.println("Olyan menüpontot választottál, ami nem létezik, kérlek válassz újra!");
