@@ -16,6 +16,10 @@ public class Player implements PlayerInterface{
         return "" + (char) ('A' + this.getColumn()) + " oszlop " + (this.getRow() +1) + ". sor";
     }
 
+    public int getCurrentGold(){
+        return this.gold;
+    }
+
     public Player(char column, int row, char direction, int arrows, int gold, Map map) {
         this.column = column;
         this.row = row;
@@ -254,7 +258,37 @@ public class Player implements PlayerInterface{
 
     @Override
     public void collectGold() {
-        // Player aranyfelveszésének implementációja
+        // Ellenőrizzük, hogy az adott irányban van-e arany (G)
+        int newRow = this.row;
+        int newColumn = this.column;
+
+        switch (direction) {
+            case 'E':
+                newColumn++;
+                break;
+            case 'S':
+                newRow++;
+                break;
+            case 'W':
+                newColumn--;
+                break;
+            case 'N':
+                newRow--;
+                break;
+        }
+
+        // Ellenőrizzük, hogy az új mező a pályán belül van-e és tartalmaz-e aranyat
+        if (isValidMove(newRow, newColumn) && map.getMap()[newRow][newColumn] == 'G') {
+            // Ha van arany, gyűjtsük össze
+            this.gold++;
+            System.out.println("Arany gyűjtve! Ennyi aranyad van most: " + this.gold);
+            map.getMap()[this.row][this.column] = '_'; // Régi pozícióra írjuk az alapértelmezett jellemzőt
+            this.row = newRow;
+            this.column = newColumn;
+            map.getMap()[this.row][this.column] = 'H'; // Új pozícióra állítjuk a 'H'-t
+        } else {
+            System.out.println("Nincs arany az adott irányban.");
+        }
     }
 
     private boolean isValidMove(int newRow, int newColumn) {

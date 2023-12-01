@@ -51,6 +51,10 @@ public class Map {
         return player.getCurrentPosition();
     }
 
+    public int getPlayerGold(){
+        return player.getCurrentGold();
+    }
+
     // További műveletek hozzáadása, például Map inicializálása, térkép kirajzolása, stb.
 
     @Override

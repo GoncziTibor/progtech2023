@@ -34,6 +34,7 @@ public class MapRowAndColumn {
         System.out.println("Ennyi íja van a hősnek: " + map.getPlayer().getArrows());
         System.out.println("Ebbe az irányba áll a hős: " + map.getPlayer().getDirection());
         System.out.println("Jelenlegi pozíciója a hősnek: " + map.getPlayerPosition());
+        System.out.println("Ennyi aranya van a hősnek: " + map.getPlayerGold());
         System.out.println("");
     }
 }
