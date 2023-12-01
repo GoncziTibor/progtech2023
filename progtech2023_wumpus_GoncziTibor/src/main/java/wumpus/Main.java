@@ -69,6 +69,14 @@ public class Main {
                 case 3:
                     String playerNameForLoad = User.getUsername();
                     GameData loadedGameData = databaseLoader.loadGameData(playerNameForLoad);
+                    if (loadedGameData != null) {
+                        System.out.println("Játék adatai betöltve:");
+                        System.out.println("Player Name: " + loadedGameData.getPlayerName());
+                        System.out.println("Victories: " + loadedGameData.getVictories());
+                        // Egyéb adatok kiírása...
+                    } else {
+                        System.out.println("A játék adatainak betöltése sikertelen!");
+                    }
                     break;
                 case 4:
                     PlayerData playerToSave = new PlayerData();
