@@ -64,6 +64,7 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.13.0</version>
         </dependency>
+
     </dependencies>
 
 
@@ -106,7 +107,8 @@
                 <configuration>
                     <excludes>
                         <exclude>wumpus/Main.*</exclude>
-                        <exclude>wumpus/model/*</exclude>
+                        <exclude>wumpus/menu/*</exclude>
+                        <exclude>wumpus/model/database/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
