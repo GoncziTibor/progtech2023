@@ -1,10 +1,11 @@
 package wumpus;
 
+import wumpus.model.Map;
+import wumpus.view.database.PlayerDataDao;
 import wumpus.view.map.MapHelp;
 import wumpus.view.map.MapRowAndColumn;
 import wumpus.view.menu.Menu;
 import wumpus.view.menu.User;
-import wumpus.model.Map;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,6 +24,7 @@ public class Main {
         Menu menu = new Menu();
         Map map = new Map();
         MapHelp mapHelp = new MapHelp();
+        PlayerDataDao playerDataDao = new PlayerDataDao();
 
 
         boolean exit = false;
@@ -60,8 +62,10 @@ public class Main {
                     game = true;
                     break;
                 case 3:
+
                     break;
                 case 4:
+
                     break;
                 case 5:
                     if (game) {
