@@ -1,12 +1,14 @@
 package wumpus;
 
 import wumpus.model.Map;
-import wumpus.view.database.PlayerDataDao;
+import wumpus.view.database.*;
 import wumpus.view.map.MapHelp;
 import wumpus.view.map.MapRowAndColumn;
 import wumpus.view.menu.Menu;
 import wumpus.view.menu.User;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -24,7 +26,10 @@ public class Main {
         Menu menu = new Menu();
         Map map = new Map();
         MapHelp mapHelp = new MapHelp();
-        PlayerDataDao playerDataDao = new PlayerDataDao();
+
+        EntityManager entityManager = Persistence.createEntityManagerFactory("my-persistence-unit").createEntityManager();
+        DatabaseLoader databaseLoader = new DatabaseLoader(entityManager);
+        DatabaseSaver databaseSaver = new DatabaseSaver(entityManager);
 
 
         boolean exit = false;
@@ -62,10 +67,20 @@ public class Main {
                     game = true;
                     break;
                 case 3:
-
+                    String playerNameForLoad = User.getUsername();
+                    GameData loadedGameData = databaseLoader.loadGameData(playerNameForLoad);
                     break;
                 case 4:
+                    PlayerData playerToSave = new PlayerData();
+                    playerToSave.setPlayerName("John Doe");
+                    playerToSave.setVictories(3);
 
+                    GameData gameData = new GameData();
+                    gameData.setPlayerName(playerToSave.getPlayerName());
+                    gameData.setVictories(playerToSave.getVictories());
+                    // Egyéb GameData információk beállítása...
+
+                    databaseSaver.saveGameData(gameData);
                     break;
                 case 5:
                     if (game) {
@@ -106,7 +121,7 @@ public class Main {
                                     menu.mainMenu();
                                     break;
                                 case 7:
-                                    // Halasztás
+                                    // Halasztás: a fő switch case 3. részénél van megoldva
                                 default:
                                     System.out.println("Ismeretlen parancs. Próbáld újra!");
                                     System.out.println("Olyan menüpontot választottál, ami nem létezik, kérlek válassz újra!");

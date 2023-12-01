@@ -20,7 +20,6 @@ public class DatabaseSaver {
             PlayerData playerData = new PlayerData();
             playerData.setPlayerName(gameData.getPlayerName());
             playerData.setVictories(gameData.getVictories());
-            // Egyéb adatok másolása...
 
             entityManager.persist(playerData);
 
