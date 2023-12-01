@@ -154,6 +154,9 @@ public class Player implements PlayerInterface{
             this.row = newRow;
             this.column = newColumn;
             this.stepCount++; // lépésszám növelése
+            if (this.row == initialRow && this.column == initialColumn && this.gold > 0) {
+                System.out.println("Gratulálok! Sikeresen teljesítetted a játékot!");
+            }
             if (map.getMap()[newRow][newColumn] == 'U') {
                 System.out.println("MEGHALTÁL! A wumpus megölt téged. A játék véget ért.");
                 map.getMap()[this.row][this.column] = '_';
@@ -169,7 +172,7 @@ public class Player implements PlayerInterface{
                     this.column = newColumn;
                     map.getMap()[this.row][this.column] = 'H';
                 } else {
-                    System.out.println("Nincs több nyilad. Nem léphetsz a verembe!");
+                    System.out.println("Nincs több nyilad(-1), ezért vége a játéknak. Nem léphetsz a verembe!");
                 }
             } else {
                 this.row = newRow;
@@ -179,11 +182,6 @@ public class Player implements PlayerInterface{
         }
 
         map.getMap()[this.row][this.column] = 'H';
-
-        if (this.row == initialRow && this.column == initialColumn && this.gold > 0) {
-            System.out.println("Gratulálok! Sikeresen teljesítetted a játékot!");
-        }
-
         MapRowAndColumn.mapPrinter(map);
     }
 
