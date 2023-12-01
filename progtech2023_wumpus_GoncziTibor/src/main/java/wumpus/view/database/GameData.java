@@ -8,8 +8,6 @@ public class GameData {
     private Map<String, Object> gameData;
     private String currentGameState;
 
-    // Getterek és setterek...
-
     public String getPlayerName() {
         return playerName;
     }

@@ -12,7 +12,6 @@ public class XmlDataReader {
             JAXBContext context = JAXBContext.newInstance(GameData.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
-            // Betölti az adatokat XML-ből
             GameData gameData = (GameData) unmarshaller.unmarshal(new File(filePath));
 
             System.out.println("Adatok sikeresen betöltve az XML-ből.");
@@ -25,20 +24,16 @@ public class XmlDataReader {
     }
 
     public static void main(String[] args) {
-        // Példa adatok betöltése XML-ből
         GameData loadedGameData = loadGameData("gameData.xml");
 
-        // Példa adatok kiolvasása
         if (loadedGameData != null) {
             System.out.println("Player Name: " + loadedGameData.getPlayerName());
             System.out.println("Victories: " + loadedGameData.getVictories());
 
-            // Példa pálya adatok kiolvasása
             Map<String, Object> gameData = loadedGameData.getGameData();
             if (gameData != null) {
                 System.out.println("Player Position: " + gameData.get("playerPosition"));
                 System.out.println("Arrows: " + gameData.get("arrows"));
-                // ... további pálya adatok ...
             }
         }
     }

@@ -7,7 +7,6 @@ public class MyEntity {
     public static void main(String[] args) {
         EntityManager em = JpaUtil.getEntityManager();
 
-        // Adatbázisműveletek végrehajtása az EntityManager-rel
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
@@ -20,7 +19,6 @@ public class MyEntity {
         // Példa: Játékos adatainak lekérdezése
         PlayerData retrievedPlayer = em.find(PlayerData.class, 1); // Példa: 1-es azonosítójú játékos lekérése
 
-        // Példa: Tranzakció befejezése
         transaction.commit();
 
         em.close();
