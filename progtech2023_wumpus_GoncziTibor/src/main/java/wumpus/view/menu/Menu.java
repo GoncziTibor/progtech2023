@@ -46,5 +46,4 @@ public class Menu {
         System.out.println("6. Felad");
         System.out.println("7. Halasztás");
     }
-
 }
