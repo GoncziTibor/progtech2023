@@ -27,6 +27,9 @@ class MapHelpTest {
     private MapReader mapReaderMock;
 
     @Mock
+    private MapRowAndColumn mapRowAndColumnMock;
+
+    @Mock
     private InputStream inputStreamMock;
 
     @Test
@@ -41,6 +44,7 @@ class MapHelpTest {
         // THEN
         assertNotNull(result);
         assertSame(expectedMap, result);
+        verifyNoInteractions(loggerMock);
     }
 
     @Test
@@ -54,5 +58,18 @@ class MapHelpTest {
         // THEN
         assertNull(result);
         verify(loggerMock).error("A pálya beolvasás közben hiba történt!");
+    }
+
+    @Test
+    void testPrintMap() {
+        // GIVEN
+        Map map = new Map();
+        doNothing().when(mapRowAndColumnMock).mapPrinter(map);
+
+        // WHEN
+        underTest.printMap(map);
+
+        // THEN
+        verify(mapRowAndColumnMock).mapPrinter(map);
     }
 }

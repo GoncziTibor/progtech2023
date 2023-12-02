@@ -13,7 +13,6 @@ import java.io.InputStreamReader;
 public class MapHelp {
     private static Logger logger = LoggerFactory.getLogger(MapHelp.class);
 
-
     public Map readMap(InputStream inputStream) {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             MapReader mapReader = new MapReader(bufferedReader);
